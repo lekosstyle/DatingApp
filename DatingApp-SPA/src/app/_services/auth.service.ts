@@ -31,13 +31,13 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(user.user));
           this.decodeToken = this.jwtHelper.decodeToken(user.token);
           this.currentUser = user.user;
-           this.changeMemberPhoto(this.currentUser.photoUrl);
+          this.changeMemberPhoto(this.currentUser.photoUrl);
         }
       })
     );
   }
-  register(model: any) {
-    return this.http.post(this.baseUrl + 'register', model);
+  register(user: User) {
+    return this.http.post(this.baseUrl + 'register', user);
   }
 
   loggedIn() {
